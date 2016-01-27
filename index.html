@@ -1,3 +1,44 @@
 <title>Pixel Legion</title>
 
-<img src="main_logo.jpg" style="display:block;margin-left:auto;margin-right:auto"/>
+<img src="img/main_logo.jpg" style="display:block;margin-left:auto;margin-right:auto;"/>
+<br>
+<h3>End of School</h3>
+<div id="school-clock"></div>
+
+<script>
+  var school_end = '2016-04-20';
+
+  function getTimeRemaining(deadline) {
+    "use strict";
+    var t = Date.parse(deadline) - Date.parse(new Date());
+    var seconds = Math.floor( (t/1000) % 60 );
+    var minutes = Math.floor( (t/(1000*60)) % 60 );
+    var hours = Math.floor( (t/(1000*60*60)) % 60 );
+    var days = Math.floor( (t/(1000*60*60*24)) );
+    return {
+      'total': t,
+      'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+    };
+  }
+
+  function initClock(id, deadline) {
+    "use strict";
+    var clock = document.getElementById(id);
+    var timeInterval = setInterval(function(){
+      "use strict";
+      var t = getTimeRemaining(deadline);
+      clock.innerHTML = t.days + ' days<br>' +
+                        t.hours + ' hours<br>' +
+                        t.minutes + ' minutes<br>' +
+                        t.seconds + ' seconds';
+      if (t.total<=0) {
+        clearInterval(timeInterval);
+      }
+    },1000);
+  }
+
+  initClock('school-clock', school_end);
+</script>
