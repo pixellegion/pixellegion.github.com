@@ -8,58 +8,8 @@
 Time Left:
 <div id="school-bar" class="countdown"></div>
 <div id="school-clock"></div>
+Week View:
+<div id="cal-bar"></div>
 
-<script>
-  var school_end = '2016-04-20';
-  var total_days = 107;
-
-  function getTimeRemaining(deadline) {
-    "use strict";
-    var t = Date.parse(deadline) - Date.parse(new Date());
-    var seconds = Math.floor( (t/1000) % 60 );
-    var minutes = Math.floor( (t/(1000*60)) % 60 );
-    var hours = Math.floor( (t/(1000*60*60)) % 24 );
-    var days = Math.floor( (t/(1000*60*60*24)) );
-    return {
-      'total': t,
-      'days': days,
-      'hours': hours,
-      'minutes': minutes,
-      'seconds': seconds
-    };
-  }
-
-  function initClock(clockId, barId, deadline, total_days) {
-    "use strict";
-    var clock = document.getElementById(clockId);
-    var bar = document.getElementById(barId);
-    var timeInterval = setInterval(function(){
-      "use strict";
-      var t = getTimeRemaining(deadline);
-      var dayPercent = (100.0 - (t.days / total_days * 100.0)).toFixed(2);
-      var hourPercent = (100.0 - (t.hours / 24 * 100.0)).toFixed(2);
-      var minPercent = (100.0 - (t.minutes / 60 * 100.0)).toFixed(2);
-      var secPercent = (100.0 - (t.seconds / 60 * 100.0)).toFixed(2);
-      clock.innerHTML = t.days + 'days and ' +
-                        t.hours + ':' +
-                        t.minutes + ':' +
-                        t.seconds + '<br>' +
-                        'You are ' + dayPercent + '% done<br><br>';
-      bar.innerHTML = '<div id="countdownBar">' +
-                      '<div id="countdownDays" style="width:' + dayPercent +'%;">' +
-                      '<div id="countdownHours" style="width:' + hourPercent +'%;">' +
-                      '<div id="countdownMinutes" style="width:' + minPercent +'%;">' +
-                      '<div id="countdownSeconds" style="width:' + secPercent +'%;">' +
-                      '</div>' +
-                      t.seconds + 's</div>' +
-                      t.minutes + 'm</div>' +
-                      t.hours + 'h</div>' +
-                      t.days + 'd</div>';
-      if (t.total<=0) {
-        clearInterval(timeInterval);
-      }
-    },1000);
-  }
-
-  initClock('school-clock', 'school-bar', school_end, total_days);
-</script>
+<script src="js/moment.js"></script>
+<script src="js/main.js"></script>

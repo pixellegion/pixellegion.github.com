@@ -43,11 +43,43 @@
   background-color: #080;
 }
 
-.dayBox {
+.calBarWeek {
   display: inline-block;
-  height: 10px;
-  width: 200px;
-  margin: 0px;
-  padding: 0px;
+  height: 20px;
+  width: 140px;
+  margin: 1px;
+  background-color: gray;
   border: 1px solid black;
+}
+
+.calBarWeek:first-of-type {
+  text-align: right;
+}
+
+.calBarDay {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  margin: 1px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.calBarDay:first-of-type, .calBarDay:last-of-type {
+  background-color: bisque;
+}
+
+.calBarWeek:first-of-type .calBarDay:first-of-type {
+  background-color: lightcoral;
+}
+
+.calBarWeek:last-of-type .calBarDay:last-of-type {
+  background-color: lightgreen;
+}
+
+.calBarHour {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: black;
 }
