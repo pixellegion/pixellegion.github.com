@@ -2,12 +2,12 @@
 /*global moment*/
 
 var school_start = moment("2016-01-04", "YYYY-MM-DD"),
-  school_end = moment("2016-04-20 24:00", "YYYY-MM-DD HH:mm");
+  school_end = moment("2016-04-12 24:00", "YYYY-MM-DD HH:mm");
 
 function getTimeBetween(startDate, endDate) {
   "use strict";
   var t = endDate - startDate,
-    seconds = Math.floor(((t / 1000) + 1) % 60),
+    seconds = Math.floor((t / 1000) % 60),
     minutes = Math.floor(((t / (1000 * 60)) + 1) % 60),
     hours = Math.floor(((t / (1000 * 60 * 60)) + 1) % 24),
     days = Math.floor((t / (1000 * 60 * 60 * 24))) + 1;
@@ -109,7 +109,7 @@ function initCalBar(calBarId, startDate, endDate) {
   timeInterval = setInterval(function () {
     var timeUntil = getTimeUntil(endDate),
       timeSince = getTimeSince(startDate),
-      hourPercent = (100.0 - (timeSince.hours / 24 * 100.0)).toFixed(2),
+      hourPercent = (100.0 - (timeUntil.hours / 24 * 100.0)).toFixed(2),
       hourBlock = document.createElement("div"),
       currentDay = days[timeSince.days - 1],
       dayCount;
