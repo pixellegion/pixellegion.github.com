@@ -1,8 +1,8 @@
 /*jslint browser: true, devel: true*/
 /*global moment*/
 
-var school_start = moment("2016-01-04", "YYYY-MM-DD"),
-  school_end = moment("2016-04-12 24:00", "YYYY-MM-DD HH:mm");
+var stretch_start = moment("2016-07-19", "YYYY-MM-DD"),
+  stretch_end = moment("2016-08-12 24:00", "YYYY-MM-DD HH:mm");
 
 function getTimeBetween(startDate, endDate) {
   "use strict";
@@ -39,7 +39,7 @@ function initClock(clockId, barId, startDate, endDate) {
     bar = document.getElementById(barId),
     duration = getTimeBetween(startDate, endDate),
     timeInterval;
-  
+
   timeInterval = setInterval(function () {
     var t = getTimeUntil(endDate),
       dayPercent = (100.0 - (t.days / duration.days * 100.0)).toFixed(2),
@@ -68,7 +68,7 @@ function initClock(clockId, barId, startDate, endDate) {
   }, 1000);
 }
 
-initClock('school-clock', 'school-bar', school_start, school_end);
+initClock('stretch-clock', 'stretch-bar', stretch_start, stretch_end);
 
 function initCalBar(calBarId, startDate, endDate) {
   "use strict";
@@ -82,7 +82,7 @@ function initCalBar(calBarId, startDate, endDate) {
     dayCount,
     weekCount,
     week;
-  
+
   for (dayCount = 0; dayCount < duration.days; dayCount += 1) {
     days[dayCount] = document.createElement("div");
     days[dayCount].className = "calBarDay";
@@ -92,12 +92,12 @@ function initCalBar(calBarId, startDate, endDate) {
       days[dayCount].appendChild(hour);
     }
   }
-  
+
   for (weekCount = 0, dayCount = -weekOffset; weekCount < (duration.days / 7); weekCount += 1) {
     week = document.createElement("div");
     week.className = "calBarWeek";
     calBar.appendChild(week);
-    
+
     while (dayCount < ((weekCount + 1) * 7) - weekOffset && dayCount < duration.days) {
       if (dayCount >= 0) {
         week.appendChild(days[dayCount]);
@@ -105,7 +105,7 @@ function initCalBar(calBarId, startDate, endDate) {
       dayCount += 1;
     }
   }
-  
+
   timeInterval = setInterval(function () {
     var timeUntil = getTimeUntil(endDate),
       timeSince = getTimeSince(startDate),
@@ -113,15 +113,15 @@ function initCalBar(calBarId, startDate, endDate) {
       hourBlock = document.createElement("div"),
       currentDay = days[timeSince.days - 1],
       dayCount;
-    
+
     hourBlock.className = "calBarHour";
     hourBlock.style = "width: " + hourPercent + "%";
-    
+
     // Remove any previous children
     while (currentDay.firstChild) {
       currentDay.removeChild(currentDay.firstChild);
     }
-    
+
     currentDay.appendChild(hourBlock);
     //for (dayCount = 0; dayCount < timeSince.days; dayCount += 1) {
     //  days[dayCount].style = "background-color: black";
@@ -129,4 +129,4 @@ function initCalBar(calBarId, startDate, endDate) {
   }, 1000);
 }
 
-initCalBar('cal-bar', school_start, school_end);
+initCalBar('cal-bar', stretch_start, stretch_end);
