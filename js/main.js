@@ -1,8 +1,8 @@
 /*jslint browser: true, devel: true*/
 /*global moment*/
 
-var stretch_start = moment("2016-07-19", "YYYY-MM-DD"),
-  stretch_end = moment("2016-08-12 24:00", "YYYY-MM-DD HH:mm");
+var stretch_start = moment("2019-01-01", "YYYY-MM-DD"),
+  stretch_end = moment("2019-07-12 24:00", "YYYY-MM-DD HH:mm");
 
 function getTimeBetween(startDate, endDate) {
   "use strict";
@@ -20,7 +20,7 @@ function getTimeBetween(startDate, endDate) {
   };
 }
 
-var test = getTimeBetween(moment("2016-01-02", "YYYY-MM-DD"), moment("2016-01-04 24:00", "YYYY-MM-DD HH:mm"));
+var test = getTimeBetween(moment("2019-01-01", "YYYY-MM-DD"), moment("2019-07-12 24:00", "YYYY-MM-DD HH:mm"));
 console.log(test.days + "d " + test.hours + ":" + test.minutes);
 
 function getTimeUntil(endDate) {
@@ -51,7 +51,7 @@ function initClock(clockId, barId, startDate, endDate) {
                       t.hours + ':' +
                       t.minutes + ':' +
                       t.seconds + '<br>' +
-                      'You are ' + dayPercent + '% done<br><br>';
+                      'You are ' + dayPercent + '% there<br><br>';
     bar.innerHTML = '<div id="countdownBar">' +
                     '<div id="countdownDays" style="width:' + dayPercent + '%;">' +
                     '<div id="countdownHours" style="width:' + hourPercent + '%;">' +
