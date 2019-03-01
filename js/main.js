@@ -1,7 +1,7 @@
 /*jslint browser: true, devel: true*/
 /*global moment*/
 
-var stretch_start = moment("2019-01-01", "YYYY-MM-DD"),
+var stretch_start = moment("2019-03-01", "YYYY-MM-DD"),
   stretch_end = moment("2019-07-12 24:00", "YYYY-MM-DD HH:mm");
 
 function getTimeBetween(startDate, endDate) {
@@ -20,7 +20,7 @@ function getTimeBetween(startDate, endDate) {
   };
 }
 
-var test = getTimeBetween(moment("2019-01-01", "YYYY-MM-DD"), moment("2019-07-12 24:00", "YYYY-MM-DD HH:mm"));
+var test = getTimeBetween(moment("2019-03-01", "YYYY-MM-DD"), moment("2019-07-12 24:00", "YYYY-MM-DD HH:mm"));
 console.log(test.days + "d " + test.hours + ":" + test.minutes);
 
 function getTimeUntil(endDate) {

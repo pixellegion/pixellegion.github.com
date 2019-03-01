@@ -1,3 +1,11 @@
+#stretch-bar {
+  max-width:600px
+}
+
+#cal-bar {
+  max-width:600px
+}
+
 .countdown div {
   text-align: right;
   font-family: monospace;
